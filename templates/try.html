@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+
+    <script src="draw.js"></script>
+
+    <title>Vaccine sentiment detection/hesitancy detection</title>
+  </head>
+  <body>
+    <h1>Vaccine sentiment detection/hesitancy detection</h1>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+          <a class="nav-link" id="nav-Try your own-tab" data-toggle="tab" href="#nav-Try your own" role="tab" aria-controls="nav-Try your own" aria-selected="false">Try your own</a>
+          <a class="nav-link" id="nav-Sentiment-tab" data-toggle="tab" href="#nav-Sentiment" role="tab" aria-controls="nav-Sentiment" aria-selected="false">Sentiment</a>
+          <a class="nav-link" id="nav-Stance-tab" data-toggle="tab" href="#nav-Stance" role="tab" aria-controls="nav-Stance" aria-selected="false">Stance</a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Introduction</div>
+        <div class="tab-pane fade" id="nav-Try your own" role="tabpanel" aria-labelledby="nav-Try your own">
+          
+          <!-- <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link active" id="v-pills-How to use-tab" data-toggle="pill" href="#v-pills-How to use" role="tab" aria-controls="v-pills-How to use" aria-selected="true">How to use</a>
+                  <a class="nav-link" id="v-pills-Let's try-tab" data-toggle="pill" href="#v-pills-Let's try" role="tab" aria-controls="v-pills-Let's try" aria-selected="false">Let's try</a>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-How to use" role="tabpanel" aria-labelledby="v-pills-How to use-tab">
+                      <h1>How to use</h1>
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-Let's try" role="tabpanel" aria-labelledby="v-pills-Let's try-tab">
+
+                    <button id="my-btn">Click Me</button>
+                    <div id="tester" style="width:600px;height:250px;"></div>
+
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          
+        </div>
+        <div class="tab-pane fade" id="nav-Sentiment" role="tabpanel" aria-labelledby="nav-Sentiment-tab">
+
+          <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link active" id="v-pills-graph-tab" data-toggle="pill" href="#v-pills-graph" role="tab" aria-controls="v-pills-graph" aria-selected="true">graph</a>
+                  <a class="nav-link" id="v-pills-Map-tab" data-toggle="pill" href="#v-pills-Map" role="tab" aria-controls="v-pills-Map" aria-selected="false">Map</a>
+                  <a class="nav-link" id="v-pills-Tables-tab" data-toggle="pill" href="#v-pills-Tables" role="tab" aria-controls="v-pills-Tables" aria-selected="false">Tables</a>
+                  <a class="nav-link" id="v-pills-Dataset-tab" data-toggle="pill" href="#v-pills-Dataset" role="tab" aria-controls="v-pills-Dataset" aria-selected="false">Dataset</a>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-graph" role="tabpanel" aria-labelledby="v-pills-graph-tab">
+                      <h1>Graph</h1>
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-Map" role="tabpanel" aria-labelledby="v-pills-Map-tab">
+                      <h1>Map</h1>
+                      <iframe src="http://127.0.0.1:5000/map" title="description" style="width:100%; min-height: 500px; height: 100%;"></iframe>
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-Tables" role="tabpanel" aria-labelledby="v-pills-Tables-tab">
+                    <h1>Table</h1>
+                    <iframe src="http://127.0.0.1:5000/table" title="description" style="width:100%; min-height: 500px; height: 100%;"></iframe>
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-Dataset" role="tabpanel" aria-labelledby="v-pills-Dataset-tab">
+
+                    <button id="my-btn">Click Me</button>
+                    <div id="tester" style="width:600px;height:250px;"></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="nav-Stance" role="tabpanel" aria-labelledby="nav-Stance">
+
+          <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link active" id="v-pills-graph-tab" data-toggle="pill" href="#v-pills-graph" role="tab" aria-controls="v-pills-graph" aria-selected="true">graph</a>
+                  <a class="nav-link" id="v-pills-Dataset-tab" data-toggle="pill" href="#v-pills-Dataset" role="tab" aria-controls="v-pills-Dataset" aria-selected="false">Dataset</a>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-graph" role="tabpanel" aria-labelledby="v-pills-graph-tab">
+                      <h1>Graph</h1>
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-Dataset" role="tabpanel" aria-labelledby="v-pills-Dataset-tab">
+
+                    <button id="my-btn">Click Me</button>
+                    <div id="tester" style="width:600px;height:250px;"></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+      
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+
+    <script>
+      $(document).ready(function() {
+
+        TESTER = document.getElementById('tester');
+        Plotly.newPlot( TESTER, [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16] }], {
+        margin: { t: 0 } } );
+
+        $("#my-btn").click(function() {
+
+        $.ajax({
+          url: '/search_keyword',
+          data: JSON.stringify({"keyword": "Hello"}),
+          type: 'POST',
+          contentType: "application/json; charset=utf-8;",
+          success: function(response){
+            console.log(response);
+          },
+          error: function(error){
+            console.log(error);
+          },
+          dataType:'json',
+        });
+
+
+        });
+
+      });
+    </script>
+  </body>
+</html>
