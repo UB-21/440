@@ -1,4 +1,5 @@
-d3.csv("/Users/liuqian/Desktop/DS440/Lavan's graph/data_tagged.csv", function(err, rows) {
+d3.csv("~/Desktop/DS440/Dataset/data_tagged.csv", function(err, rows) {
+    // d3.csv("https://raw.githubusercontent.com/UB-21/440/ca18df94eed032c814a0e630e0f39a851c4b50c6/data_tagged.csv", function(err, rows) {
 
     function unpack(rows, key) {
         return rows.map(function(row) { return row[key]; });
@@ -10,7 +11,7 @@ d3.csv("/Users/liuqian/Desktop/DS440/Lavan's graph/data_tagged.csv", function(er
         mode: "lines",
         name: 'AAPL High',
         x: unpack(rows, 'Date'),
-        y: unpack(rows, 'sentiment'),
+        y: unpack(rows, 'label'),
         line: { color: '#17BECF' }
     }
 
